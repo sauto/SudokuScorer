@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SudokuScorer</string>
+    <string name="blank">〇</string>
+    <string name="solve">解く</string>
+    <string name="reset">リセット</string>
+    <string name="brute">未完成で総当たり法使用</string>
+    <string name="display">使用した解法を表示</string>
 </resources>
