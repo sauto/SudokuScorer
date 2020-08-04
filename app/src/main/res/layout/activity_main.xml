@@ -6,13 +6,767 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="92dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/reset"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/solve"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumberSigned"
+        android:layout_width="344dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="167dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="116dp"
+        android:text="@string/display"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="195dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginBottom="94dp"
+        android:text="@string/brute"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberSigned">
+
+    <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView62"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView74"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView75"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView76"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView77"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView78"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView81"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView82"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView84"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView85"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView86"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView87"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView88"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView89"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView91"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView92"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView93"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView94"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView95"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView96"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+
+            <TextView
+                android:id="@+id/textView97"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView98"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView99"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/frame"
+                android:text="@string/blank"
+                android:textSize="30sp" />
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
