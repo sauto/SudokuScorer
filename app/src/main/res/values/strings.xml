@@ -5,4 +5,7 @@
     <string name="reset">リセット</string>
     <string name="brute">未完成で総当たり法使用</string>
     <string name="display">使用した解法を表示</string>
+    <string name="score">難易度スコア</string>
+    <string name="input">盤面を入力してください（左上から右下へ行ごとに、空白は0）</string>
+    <string name="option">オプション</string>
 </resources>
