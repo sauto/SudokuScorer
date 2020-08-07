@@ -13,18 +13,19 @@ public class UtilityTest {
     @Test
     public void isCompleteBoard() {
 
-        Resources r = SupportApplication.getContext().getResources();
+        Resources resources = SupportApplication.getContext().getResources();
 
-//        AppCompatActivity activity = new AppCompatActivity();
-//        Resources resources = activity.getResources();
-        String a =  r.getString(R.string.easy);
-        Assert.assertEquals(a,"609020040008079000100040000200001435851407609306950078510700863700385291003206004");
-        int xynum = 0;
-        int[][] boardMatrix;
-//        for (int i = 0; i < Utility.ROW; i++)
-//            for (int j = 0; j < Utility.COL; j++)
-//                boardMatrix[i][j] = dataList[xynum++];
-//        Utility.IsCompleteBoard()
+        String dataList = resources.getString(R.string.easy_answer);
+//        Assert.assertEquals(a,"609020040008079000100040000200001435851407609306950078510700863700385291003206004");
+
+        int[] arrData = new int[Utility.ROW * Utility.COL];
+        for (int i = 0; i < Utility.ROW * Utility.COL; i++)
+            arrData[i] = dataList.charAt(i) - '0';
+
+
+        int[][] boardMatrix = Utility.ArrayDimConvert(arrData);
+        Assert.assertTrue(Utility.IsCompleteBoard(boardMatrix));
+
 
     }
 }
