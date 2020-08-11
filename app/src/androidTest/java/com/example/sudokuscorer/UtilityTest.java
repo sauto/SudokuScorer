@@ -5,14 +5,9 @@ import org.junit.Test;
 
 import android.content.res.Resources;
 import android.graphics.Point;
-import android.os.Debug;
 import android.util.Log;
 
-import java.lang.reflect.Array;
-import java.security.cert.PolicyNode;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class UtilityTest {
@@ -320,8 +315,26 @@ public class UtilityTest {
                 {true,true,true,true,true,true,true,true,true,},
         };
 
-        Assert.assertTrue(Arrays.deepEquals(truemat,Utility.GenBool2DimArray()));
+        Assert.assertTrue(Arrays.deepEquals(truemat,Utility.GenInitBool2DimArray()));
 
+    }
+
+    @Test
+    public void GenInitInt2DimArray()
+    {
+        int[][] mat={
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,},
+                {0,0,0,0,0,0,0,0,0,}
+        };
+
+        Assert.assertTrue(Arrays.deepEquals(mat,Utility.GenInitInt2DimArray(Utility.ROW,Utility.COL)));
     }
 
     /**

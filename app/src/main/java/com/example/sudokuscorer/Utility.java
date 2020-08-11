@@ -312,11 +312,25 @@ public class Utility {
      * bool型の二次元配列をtrueで初期化して生成
      * @return bool型二次元配列
      */
-    public static boolean[][] GenBool2DimArray()
+    public static boolean[][] GenInitBool2DimArray()
     {
         boolean[][] boardMatrix = new boolean[Utility.ROW][Utility.COL];
         for (int i = 0; i < Utility.ROW; i++)
             Arrays.fill(boardMatrix[i], true);
         return boardMatrix;
     }
+
+    /**
+     * int型の二次元配列をtrueで初期化して生成
+     * @return int型二次元配列
+     */
+    public static int[][] GenInitInt2DimArray(int row,int col)
+    {
+        int[][] boardMatrix = new int[row][col];
+        for (int i = 0; i < Utility.ROW; i++)
+            Arrays.fill(boardMatrix[i], 0);
+        return boardMatrix;
+    }
+
+
 }
