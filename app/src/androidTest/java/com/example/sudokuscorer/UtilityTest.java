@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -368,5 +369,66 @@ public class UtilityTest {
             }
         Log.d("",board);
 
+    }
+
+    /**
+     * 候補数字のコンソール出力
+     * @param candmat
+     */
+    public static void CandidateOutput(int[][] candmat)
+    {
+        String output = "";
+        String outputCandidate = "";
+
+        //各マスの候補数列入力
+        for (int i = 0; i < Utility.ROW; i++)
+            for (int j = 0; j < Utility.COL; j++)
+                for (int bit = 2; bit < (int)Math.pow(2, 10); bit <<= 1)
+                {
+                    if ((candmat[i][j] & bit) == bit)
+                        outputCandidate += Math.round(Math.log(bit)/Math.log(2));
+                    else
+                        outputCandidate += ' ';
+                }
+        //各マスの候補数字表示
+        for (int n = 0; n < 9; n++)
+        {
+            for (int i = n * 81; i < (n + 1) * 81; i = i + 9)
+            {
+                for (int k = i; k < i + 3; k++)
+                {//3個ずつぶち抜く
+                    output += outputCandidate.charAt(k);
+                    output += ("|");
+                    if (k == i + 2) { output += ("|"); }
+                }
+            }
+            Log.d("",output+"\n");
+            output = "";
+            for (int i = n * 81; i < (n + 1) * 81; i = i + 9)
+            {
+                for (int k = i + 3; k < i + 6; k++)
+                {//3個ずつぶち抜く
+                    output += outputCandidate.charAt(k);
+                    output += ("|");
+                    if (k == i + 5) { output += ("|"); }
+                }
+            }
+            Log.d("",output+"\n");
+            output = "";
+            for (int i = n * 81; i < (n + 1) * 81; i = i + 9)
+            {
+                for (int k = i + 6; k < i + 9; k++)
+                {//3個ずつぶち抜く
+                    output += outputCandidate.charAt(k);
+                    output += ("|");
+                    if (k == i + 8) { output += ("|"); }
+                }
+            }
+            Log.d("",output+"\n");
+            output = "";
+            output += ("---------------------------------------------------------------");
+            Log.d("",output+"\n");
+            output = "";
+        }
     }
 }
