@@ -17,6 +17,12 @@ public class Utility {
     public static final int COL = 9;
     public static final int MAX = 82;
     public static final int MAX_BIT_DIGIT = 10;
+    /**
+     * マスに候補数字１～９がすべて存在していることを表すビット列
+     * 配列のインデックスと合わせるため一桁目は使わない
+     * perseInt用
+     */
+    public static final String ALL_EXIST_CANDIDATE = "1111111110";
 
     /**
      * 全てのマスが数独のルール（行列ブロックでダブり数字なし）通り埋まっているかを判定
@@ -148,13 +154,13 @@ public class Utility {
      * 埋まったマスを含む行列ブロックから検索対象の数字を除外
      *
      * @param isBlankPoint   その数字が座標に入っているか
-     * @param inputablePoint 座標
+     * @param canInputPoint 座標
      */
-    public static void ExcludeNumberInRowColBlock(boolean[][] isBlankPoint, Point inputablePoint) {
-        for (int j = 0; j < COL; j++) isBlankPoint[inputablePoint.x][j] = false;
-        for (int i = 0; i < ROW; i++) isBlankPoint[i][inputablePoint.y] = false;
+    public static void ExcludeNumberInRowColBlock(boolean[][] isBlankPoint, Point canInputPoint) {
+        for (int j = 0; j < COL; j++) isBlankPoint[canInputPoint.x][j] = false;
+        for (int i = 0; i < ROW; i++) isBlankPoint[i][canInputPoint.y] = false;
 
-        Point blockPoint = GetBlockPoint(inputablePoint.x, inputablePoint.y);
+        Point blockPoint = GetBlockPoint(canInputPoint.x, canInputPoint.y);
         for (int i = blockPoint.x; i <= blockPoint.x + 2; i++)
             for (int j = blockPoint.y; j <= blockPoint.y + 2; j++)
                 isBlankPoint[i][j] = false;
