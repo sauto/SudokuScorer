@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,12 +15,12 @@ public class UtilityTest {
     @Test
     public void isCompleteBoard() {
         int[] arrData = UtilityTest.GetSequence(R.string.easy_answer);
-        int[][] boardMatrix = Utility.ArrayDimConvert(arrData);
+        int[][] boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         Assert.assertTrue(Utility.IsCompleteBoard(boardMatrix));
    }
 
     @Test
-    public  void ArrayDimConvert(){
+    public  void ArrayDimConvertToTwo(){
         int[] arrData = UtilityTest.GetSequence(R.string.easy);
         int[][] answer={
                 {6,0,9,0,2,0,0,4,0},
@@ -35,7 +34,26 @@ public class UtilityTest {
                 {0,0,3,2,0,6,0,0,4}
         };
 
-        Assert.assertTrue(Arrays.deepEquals(answer,Utility.ArrayDimConvert(arrData)));
+        Assert.assertTrue(Arrays.deepEquals(answer,Utility.ArrayDimConvertToTwo(arrData)));
+        //UtilityTest.BoardPrint(Utility.ArrayDimConvert(arrData));
+    }
+
+    @Test
+    public  void ArrayDimConvertToOne(){
+        int[][] arrData={
+                {6,0,9,0,2,0,0,4,0},
+                {0,0,8,0,7,9,0,0,0},
+                {1,0,0,0,4,0,0,0,0},
+                {2,0,0,0,0,1,4,3,5},
+                {8,5,1,4,0,7,6,0,9},
+                {3,0,6,9,5,0,0,7,8},
+                {5,1,0,7,0,0,8,6,3},
+                {7,0,0,3,8,5,2,9,1},
+                {0,0,3,2,0,6,0,0,4}
+        };
+        int[] answer = UtilityTest.GetSequence(R.string.easy);
+
+        Assert.assertTrue(Arrays.equals(answer,Utility.ArrayDimConvertToOne(arrData)));
         //UtilityTest.BoardPrint(Utility.ArrayDimConvert(arrData));
     }
 
@@ -56,8 +74,8 @@ public class UtilityTest {
     @Test
     public void IsChangeBoard()
     {
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.easy_answer));
-        int[][] prevmat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.easy));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.easy_answer));
+        int[][] prevmat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.easy));
         Assert.assertTrue(Utility.IsChangeBoard(mat,prevmat));
         Assert.assertFalse(Utility.IsChangeBoard(mat,mat));
 
@@ -66,7 +84,7 @@ public class UtilityTest {
     @Test
     public void CopyToBufferMatrix()
     {
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.easy_answer));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.easy_answer));
         int[][] bufmat = new int[9][9];
         Utility.CopyToBufferMatrix(mat,bufmat);
 
@@ -258,7 +276,7 @@ public class UtilityTest {
     public void FilledCellCandidateDel()
     {
         int[] arrData = UtilityTest.GetSequence(R.string.easy_answer);
-        int[][] boardMatrix = Utility.ArrayDimConvert(arrData);
+        int[][] boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         int[][] candmat = new int[9][9];
         for (int n=0;n<9;n++)
             Arrays.fill(candmat[n],Integer.parseInt("1111111110", 2));
@@ -269,7 +287,7 @@ public class UtilityTest {
         Assert.assertTrue(candmat[8][8]==0);
 
         arrData = UtilityTest.GetSequence(R.string.easy);
-        boardMatrix = Utility.ArrayDimConvert(arrData);
+        boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         for (int n=0;n<9;n++)
             Arrays.fill(candmat[n],Integer.parseInt("1111111110", 2));
 
@@ -288,16 +306,16 @@ public class UtilityTest {
     {
 
         int[] arrData = UtilityTest.GetSequence(R.string.easy_miss_row);
-        int[][] boardMatrix = Utility.ArrayDimConvert(arrData);
+        int[][] boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         Utility.IsMistake(boardMatrix,"row");
 
         arrData =UtilityTest.GetSequence(R.string.easy_miss_col);
-        boardMatrix = Utility.ArrayDimConvert(arrData);
+        boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         Utility.IsMistake(boardMatrix,"col");
 
 
         arrData =UtilityTest.GetSequence(R.string.easy_miss_block);
-        boardMatrix = Utility.ArrayDimConvert(arrData);
+        boardMatrix = Utility.ArrayDimConvertToTwo(arrData);
         Utility.IsMistake(boardMatrix,"block");
     }
 
@@ -345,6 +363,7 @@ public class UtilityTest {
      */
     public static int[] GetSequence(Integer number)
     {
+        //xmlリソースを取得
         Resources resources = SupportApplication.getContext().getResources();
         String dataList= resources.getString(number);
         int[] arrData = new int[Utility.ROW * Utility.COL];

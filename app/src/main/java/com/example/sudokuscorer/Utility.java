@@ -41,9 +41,8 @@ public class Utility {
                 numAppearCheck.set(mat[i][j], numAppearCheck.get(mat[i][j]) + 1);
             //空白マス（index=0）を除外
             numAppearCheck.remove(0);
-            stream = numAppearCheck.stream();
             //1～9が1回ずつ出ていなければ終了
-            if (!stream.allMatch(s -> s.equals(1)))
+            if (!numAppearCheck.stream().allMatch(s -> s.equals(1)))
                 return false;
 
             numAppearCheck = new ArrayList<Integer>(Collections.nCopies(10, 0));
@@ -54,9 +53,9 @@ public class Utility {
             for (int j = 0; j < COL; j++)
                 numAppearCheck.set(mat[i][j], numAppearCheck.get(mat[i][j]) + 1);
             numAppearCheck.remove(0);
-            stream = numAppearCheck.stream();
+
             //1～9が1回ずつ出ていなければ終了
-            if (!stream.allMatch(s -> s.equals(1)))
+            if (!numAppearCheck.stream().allMatch(s -> s.equals(1)))
                 return false;
 
             numAppearCheck = new ArrayList<Integer>(Collections.nCopies(10, 0));
@@ -70,9 +69,9 @@ public class Utility {
                     for (int j = blockPoint.y; j <= blockPoint.y + 2; j++)
                         numAppearCheck.set(mat[i][j], numAppearCheck.get(mat[i][j]) + 1);
                 numAppearCheck.remove(0);
-                stream = numAppearCheck.stream();
+
                 //1～9が1回ずつ出ていなければ終了
-                if (!stream.allMatch(s -> s.equals(1)))
+                if (!numAppearCheck.stream().allMatch(s -> s.equals(1)))
                     return false;
 
                 numAppearCheck = new ArrayList<Integer>(Collections.nCopies(10, 0));
@@ -88,7 +87,7 @@ public class Utility {
      * @param dataList
      * @return 9×9の盤面データ
      */
-    public static int[][] ArrayDimConvert(int[] dataList) {
+    public static int[][] ArrayDimConvertToTwo(int[] dataList) {
         int xynum = 0;
         int[][] boardMatrix = new int[Utility.ROW][Utility.COL];
         for (int i = 0; i < Utility.ROW; i++)
@@ -98,6 +97,23 @@ public class Utility {
             }
 
         return boardMatrix;
+    }
+
+    /**
+     * 9×9の盤面の二次元配列を１次元配列に変換
+     * @param boardMatrix
+     * @return 盤面の数列データ
+     */
+    public static int[] ArrayDimConvertToOne(int[][] boardMatrix) {
+        int xynum = 0;
+        int[] dataList = new int[Utility.ROW*Utility.COL];
+        for (int i = 0; i < Utility.ROW; i++)
+            for (int j = 0; j < Utility.COL; j++) {
+                dataList[xynum]= boardMatrix[i][j];
+                xynum++;
+            }
+
+        return dataList;
     }
 
     /**
@@ -239,7 +255,7 @@ public class Utility {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static boolean IsMistake(int[][] mat, String logic) {
         List<Integer> numAppearCheck = new ArrayList<Integer>(Collections.nCopies(10, 0));
-        Stream<Integer> stream;
+
         /*行の判定*/
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COL; j++)
@@ -249,9 +265,10 @@ public class Utility {
             Stream<Integer> repetitionStream = numAppearCheck.stream().filter(s -> s >= 2);
             //ダブってたら終了
             if (repetitionStream.count() > 0) {
+                String str = "";
                 //countで終端処理しちゃったので再度stream生成
                 repetitionStream = numAppearCheck.stream().filter(s -> s >= 2);
-                String str = "";
+
                 Integer[] arr = repetitionStream.toArray(s -> new Integer[s]);
                 for (Integer k : arr) {
                     str += k.toString();
@@ -260,6 +277,8 @@ public class Utility {
                 Log.d("debug", i + "行" + str + "個重複 失敗:" + logic);
             }
             numAppearCheck = new ArrayList<Integer>(Collections.nCopies(10, 0));
+
+
         }
 
         /*列の判定*/
