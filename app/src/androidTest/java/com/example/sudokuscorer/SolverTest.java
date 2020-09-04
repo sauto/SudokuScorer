@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class SolverTest {
 
@@ -69,10 +68,10 @@ public class SolverTest {
     public void singlizeCandidateLogic() {
         Solver solver = new Solver(true);
 
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_candidate_logic));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_candidate_logic));
         int[][] candmat= solver.WriteCandidate(mat);
 
-        int[][] mat_a = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_candidate_logic));
+        int[][] mat_a = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_candidate_logic));
         mat_a[0][0]=9;
 
         int[][] candmat_a=solver.WriteCandidate(mat);
@@ -102,7 +101,7 @@ public class SolverTest {
     public void singleCellFillLogic() {
         Solver solver = new Solver(true);
 
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_cell_logic_r));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_cell_logic_r));
         int[][] candmat= solver.WriteCandidate(mat);
 
         int[][] candmat_row_a=solver.WriteCandidate(mat);
@@ -113,7 +112,7 @@ public class SolverTest {
 //        UtilityTest.CandidateOutput(candmat_row_a);
         Assert.assertTrue(Arrays.deepEquals(candmat,candmat_row_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_cell_logic_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_cell_logic_c));
         candmat= solver.WriteCandidate(mat);
 
         int[][] candmat_col_a=solver.WriteCandidate(mat);
@@ -125,7 +124,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat,candmat_col_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_cell_logic_b));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_cell_logic_b));
         candmat= solver.WriteCandidate(mat);
 
         int[][] candmat_block_a=solver.WriteCandidate(mat);
@@ -142,10 +141,10 @@ public class SolverTest {
     public void doSingleLogics() {
         Solver solver = new Solver(true);
 
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_logic_loop));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_logic_loop));
         int[][] candmat = solver.WriteCandidate(mat);
 
-        int[][] mat_a =Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.single_logic_loop));
+        int[][] mat_a =Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.single_logic_loop));
         mat_a[0][0]=9;
         mat_a[6][8]=5;
         int[][] candmat_a =solver.WriteCandidate(mat_a);
@@ -163,8 +162,8 @@ public class SolverTest {
     public void cellFill() {
         Solver solver = new Solver(true);
 
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cellfill));
-        int[][] mat_a =Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cellfill));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cellfill));
+        int[][] mat_a =Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cellfill));
         mat_a[0][0]=1;
         mat_a[1][1]=9;
         mat_a[8][8]=8;
@@ -191,8 +190,8 @@ public class SolverTest {
     public void bruteForce() {
         Solver solver = new Solver(true);
         int[] seq = UtilityTest.GetSequence(R.string.bruteforce);
-        int[][] mat = Utility.ArrayDimConvert(seq);
-        int[][] mat_a = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.veryhard_answer));
+        int[][] mat = Utility.ArrayDimConvertToTwo(seq);
+        int[][] mat_a = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.veryhard_answer));
 
         solver.BruteForce(seq,0,mat);
 
@@ -205,16 +204,16 @@ public class SolverTest {
     @Test
     public void crbe() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.crbe));
-        int[][] mat_a = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.crbe_answer));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.crbe));
+        int[][] mat_a = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.crbe_answer));
 
         solver.Crbe(mat);
 
         Assert.assertTrue(Arrays.deepEquals(mat,mat_a));
 
         //無限ループ回避テスト
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.crbe_bug));
-        mat_a = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.crbe_bug));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.crbe_bug));
+        mat_a = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.crbe_bug));
 
 
         solver.Crbe(mat);
@@ -229,7 +228,7 @@ public class SolverTest {
     @Test
     public void shareCandidateLogic() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.share_candidate_r_to_b));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.share_candidate_r_to_b));
         int[][] candmat = solver.WriteCandidate(mat);
         int[][] candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][1] = Integer.parseInt("0000111110", 2);
@@ -250,7 +249,7 @@ public class SolverTest {
         //Log.d("log",solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.share_candidate_c_to_b));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.share_candidate_c_to_b));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[1][1] = Integer.parseInt("0000111110", 2);
@@ -268,7 +267,7 @@ public class SolverTest {
         //Log.d("log",solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.share_candidate_b_to_r));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.share_candidate_b_to_r));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][6] = Integer.parseInt("0100111100", 2);
@@ -283,7 +282,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.share_candidate_b_to_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.share_candidate_b_to_c));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0] = Integer.parseInt("0100110100", 2);
@@ -303,7 +302,7 @@ public class SolverTest {
     @Test
     public void pairLogic() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_pair_logic_r));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_pair_logic_r));
         int[][] candmat = solver.WriteCandidate(mat);
         int[][] candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][0]=Integer.parseInt("1110000000",2);
@@ -315,7 +314,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_pair_logic_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_pair_logic_c));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("1110000000",2);
@@ -328,7 +327,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_pair_logic_b));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_pair_logic_b));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][1]=Integer.parseInt("0000101010",2);
@@ -342,7 +341,7 @@ public class SolverTest {
 
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_pair_logic_r));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_pair_logic_r));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][0]=Integer.parseInt("0110000000",2);
@@ -355,7 +354,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_pair_logic_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_pair_logic_c));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("0110000000",2);
@@ -367,7 +366,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_pair_logic_b));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_pair_logic_b));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][1]=Integer.parseInt("0110000000",2);
@@ -384,7 +383,7 @@ public class SolverTest {
     @Test
     public void AloneTripleLogic() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_r_333));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_r_333));
         int[][] candmat = solver.WriteCandidate(mat);
         int[][] candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][6]=Integer.parseInt("0001010100",2);
@@ -396,7 +395,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_r_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_r_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][6]=Integer.parseInt("0001010100",2);
@@ -408,7 +407,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_r_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_r_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][6]=Integer.parseInt("0001010100",2);
@@ -420,7 +419,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_r_222));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_r_222));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[8][6]=Integer.parseInt("0001010100",2);
@@ -432,7 +431,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_c_333));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_c_333));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("1110000000",2);
@@ -445,7 +444,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_c_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_c_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("1110000000",2);
@@ -458,7 +457,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_c_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_c_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("1110000000",2);
@@ -471,7 +470,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_c_222));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_c_222));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0]=Integer.parseInt("1110000000",2);
@@ -484,7 +483,7 @@ public class SolverTest {
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_b_333));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_b_333));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0]=Integer.parseInt("0001111110",2);
@@ -500,7 +499,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_b_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_b_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0]=Integer.parseInt("0001111110",2);
@@ -516,7 +515,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_b_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_b_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0]=Integer.parseInt("0001111110",2);
@@ -532,7 +531,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.alone_triple_logic_b_222));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.alone_triple_logic_b_222));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0]=Integer.parseInt("0001111110",2);
@@ -552,7 +551,7 @@ public class SolverTest {
     @Test
     public void ParasiteTripleLogic() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_333));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_333));
         int[][] candmat = solver.WriteCandidate(mat);
         int[][] candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0] = Integer.parseInt("1110000000", 2);
@@ -564,7 +563,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0] = Integer.parseInt("1110000000", 2);
@@ -576,7 +575,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0] = Integer.parseInt("1110000000", 2);
@@ -588,7 +587,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_222));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_r_222));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[6][0] = Integer.parseInt("1100000000", 2);
@@ -600,7 +599,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_333));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_333));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][2] = Integer.parseInt("1110000000", 2);
@@ -612,7 +611,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][2] = Integer.parseInt("1100000000", 2);
@@ -624,7 +623,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][2] = Integer.parseInt("1100000000", 2);
@@ -636,7 +635,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_222));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_c_222));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][2] = Integer.parseInt("1100000000", 2);
@@ -648,7 +647,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_333));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_333));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0] = Integer.parseInt("1110000000", 2);
@@ -660,7 +659,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_332));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_332));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0] = Integer.parseInt("1110000000", 2);
@@ -672,7 +671,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_322));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.parasite_triple_logic_b_322));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][0] = Integer.parseInt("1110000000", 2);
@@ -694,7 +693,7 @@ public class SolverTest {
     @Test
     public void crossLogic() {
         Solver solver = new Solver(true);
-        int[][] mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cross_logic_r));
+        int[][] mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cross_logic_r));
         int[][] candmat = solver.WriteCandidate(mat);
         int[][] candmat_a = solver.WriteCandidate(mat);
         candmat_a[2][4] = Integer.parseInt("0101000000", 2);
@@ -715,7 +714,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cross_logic_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cross_logic_c));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[4][6] = Integer.parseInt("0101000000", 2);
@@ -732,7 +731,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cross_logic_num_r));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cross_logic_num_r));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[0][3] = Integer.parseInt("0111100110", 2);
@@ -756,7 +755,7 @@ public class SolverTest {
         Log.d("log", solver.getLog());
         Assert.assertTrue(Arrays.deepEquals(candmat, candmat_a));
 
-        mat = Utility.ArrayDimConvert(UtilityTest.GetSequence(R.string.cross_logic_num_c));
+        mat = Utility.ArrayDimConvertToTwo(UtilityTest.GetSequence(R.string.cross_logic_num_c));
         candmat = solver.WriteCandidate(mat);
         candmat_a = solver.WriteCandidate(mat);
         candmat_a[5][0] = Integer.parseInt("0111100110", 2);

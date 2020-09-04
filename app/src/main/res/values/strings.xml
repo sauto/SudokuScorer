@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SudokuScorer</string>
-    <string name="blank">〇</string>
+    <string name="blank"> </string>
     <string name="solve">解く</string>
     <string name="reset">リセット</string>
     <string name="brute">未完成で総当たり法使用</string>
@@ -8,4 +8,7 @@
     <string name="score">難易度スコア</string>
     <string name="input">盤面を入力してください（左上から右下へ行ごとに、空白は0）</string>
     <string name="option">オプション</string>
+    <string name="numZero">0</string>
+    <string name="hint">ここに入力</string>
+
 </resources>

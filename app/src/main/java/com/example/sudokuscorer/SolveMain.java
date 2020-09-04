@@ -38,7 +38,7 @@ public class SolveMain
      * @return 解盤面の数列リスト
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public List<String> Solve(String data, boolean isUseBacktrack, boolean isDisplayUsedLogic)
+    public String Solve(String data, boolean isUseBacktrack, boolean isDisplayUsedLogic)
     {
         int[] dataList = new int[Utility.ROW * Utility.COL];
 
@@ -71,11 +71,11 @@ public class SolveMain
 
         if(Utility.IsMistake(boardMatrix,"初回単一まで"))
         {
-            List<String> list = new ArrayList<>();
+            String str="";
             for(int i: dataList)
-                list.add(i == 0 ? "" : Integer.toString(i));
+                str+=i == 0 ? " " : Integer.toString(i);
             Log = "ありえない盤面です";
-            return list;
+            return str;
         }
 
 
@@ -194,12 +194,10 @@ public class SolveMain
 
         DScore = solver.getDifficultScore();
 
-        List<String> strData = new ArrayList<>();
+        String str="";
         for(int i: dataList)
-            strData.add(i == 0 ? "" : Integer.toString(i));
-
-
-        return strData;
+            str+=i == 0 ? " " : Integer.toString(i);
+        return str;
     }
 
 }
