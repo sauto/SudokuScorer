@@ -1,4 +1,4 @@
-package com.example.sudokuscorer;
+package com.dscore.sudokuscorer;
 
 
 import android.app.Application;

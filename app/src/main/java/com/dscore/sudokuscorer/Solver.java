@@ -1,21 +1,15 @@
-package com.example.sudokuscorer;
+package com.dscore.sudokuscorer;
 
 import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Build;
-import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Solver {
 

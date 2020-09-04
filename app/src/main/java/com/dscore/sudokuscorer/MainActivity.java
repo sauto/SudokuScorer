@@ -1,13 +1,11 @@
-package com.example.sudokuscorer;
+package com.dscore.sudokuscorer;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -16,7 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.example.sudokuscorer.databinding.ActivityMainBinding;
+import com.dscore.sudokuscorer.databinding.ActivityMainBinding;
 
 import java.util.Collections;
 import java.util.Objects;
