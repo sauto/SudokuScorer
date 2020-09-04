@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         //回転時データ復帰
-        binding.displayUseLogicTextView.setText(Objects.requireNonNull(savedInstanceState.getString("log")).toString());
-        binding.scoreNumtextView.setText(Objects.requireNonNull(savedInstanceState.getString("score")).toString());
-        String str = Objects.requireNonNull(savedInstanceState.getString("answerBoard")).toString();
+        binding.displayUseLogicTextView.setText(Objects.requireNonNull(savedInstanceState.getString("log")));
+        binding.scoreNumtextView.setText(Objects.requireNonNull(savedInstanceState.getString("score")));
+        String str = Objects.requireNonNull(savedInstanceState.getString("answerBoard"));
         saveStrData = str;
         setBoard(str);
     }

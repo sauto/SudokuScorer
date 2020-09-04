@@ -4,37 +4,35 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 public class SolveMain
 {
     public int getDScore() {
-        return DScore;
+        return dScore;
     }
 
-    public void setDScore(int DScore) {
-        this.DScore = DScore;
+    public void setDScore(int dScore) {
+        this.dScore = dScore;
     }
 
-    public int DScore = 0;
+    public int dScore = 0;
 
     public String getLog() {
-        return Log;
+        return log;
     }
 
     public void setLog(String log) {
-        Log = log;
+        this.log = log;
     }
 
-    public String Log = "";
+    public String log = "";
 
     /**
      * 解法を適用して数独を解く
-     * @param data
-     * @param isUseBacktrack
-     * @param isDisplayUsedLogic
+     * @param data 盤面をラスター走査して作った数列
+     * @param isUseBacktrack　総当たり法を使うかどうか
+     * @param isDisplayUsedLogic　使った解法を表示するかどうか
      * @return 解盤面の数列リスト
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -74,13 +72,14 @@ public class SolveMain
             String str="";
             for(int i: dataList)
                 str+=i == 0 ? " " : Integer.toString(i);
-            Log = "ありえない盤面です";
+            log = "ありえない盤面です";
             return str;
         }
 
 
-        int[][] bufMatrix = Utility.GenInitInt2DimArray(Utility.ROW, Utility.COL);
-        Utility.CopyToBufferMatrix(boardMatrix, bufMatrix);
+        //ロジック適用前の盤面を保存
+        int[][] prevUseAllLogicsBufferMatrix = Utility.GenInitInt2DimArray(Utility.ROW, Utility.COL);
+        Utility.CopyToBufferMatrix(boardMatrix, prevUseAllLogicsBufferMatrix);
 
         //ロジック登録
         BiConsumer<int[][],int[][]>[] logics = new BiConsumer[4];
@@ -89,9 +88,9 @@ public class SolveMain
         logics[2] = solver::CrossLogic;
         logics[3] = solver::TripleLogic;
 
-        int[][] bufferMatrix = Utility.GenInitInt2DimArray(Utility.ROW, Utility.COL);
-        //処理前盤面記憶
-        Utility.CopyToBufferMatrix(candidateMat, bufferMatrix);
+        //ロジック１つを処理する前の盤面記憶用
+        int[][] prevUseLogicBufferMatrix = Utility.GenInitInt2DimArray(Utility.ROW, Utility.COL);
+        Utility.CopyToBufferMatrix(candidateMat, prevUseLogicBufferMatrix);
         boolean loopFlag = true;
         boolean breakFlag = false;
 
@@ -100,14 +99,13 @@ public class SolveMain
             //定石Aのみ盤面変化ならループ
             while (loopFlag)
             {
-
                 //処理前盤面記憶
-                Utility.CopyToBufferMatrix(candidateMat, bufferMatrix);
+                Utility.CopyToBufferMatrix(candidateMat, prevUseLogicBufferMatrix);
 
                 //●●●●定石A●●●●//
                 logics[0].accept(boardMatrix, candidateMat);
 
-                loopFlag = Utility.IsChangeBoard(candidateMat, bufferMatrix);
+                loopFlag = Utility.IsChangeBoard(candidateMat, prevUseLogicBufferMatrix);
 
                 //完成時強制終了
                 if (Utility.IsCompleteBoard(boardMatrix))
@@ -122,7 +120,7 @@ public class SolveMain
 
             loopFlag = true;
             //処理前盤面記憶
-            Utility.CopyToBufferMatrix(candidateMat, bufferMatrix);
+            Utility.CopyToBufferMatrix(candidateMat, prevUseLogicBufferMatrix);
 
             //●●●●定石B●●●●//
             logics[1].accept(boardMatrix, candidateMat);
@@ -132,13 +130,11 @@ public class SolveMain
                 break;
 
             //盤面変化したら最初に戻って定石Aから
-            if (Utility.IsChangeBoard(candidateMat, bufferMatrix))
-            {
-                //Utility.CandidateOutput(candidateMat);
+            if (Utility.IsChangeBoard(candidateMat, prevUseLogicBufferMatrix))
                 continue;
-            }
+
             //処理前盤面記憶
-            Utility.CopyToBufferMatrix(candidateMat, bufferMatrix);
+            Utility.CopyToBufferMatrix(candidateMat, prevUseLogicBufferMatrix);
 
             //●●●●定石C●●●●//
             logics[2].accept(boardMatrix, candidateMat);
@@ -148,14 +144,11 @@ public class SolveMain
                 break;
 
             //盤面変化したら最初に戻って定石Aから
-            if (Utility.IsChangeBoard(candidateMat, bufferMatrix))
-            {
-                //Utility.Mistake(boardMatrix,"対角");
+            if (Utility.IsChangeBoard(candidateMat, prevUseLogicBufferMatrix))
                 continue;
-            }
 
             //処理前盤面記憶
-            Utility.CopyToBufferMatrix(candidateMat, bufferMatrix);
+            Utility.CopyToBufferMatrix(candidateMat, prevUseLogicBufferMatrix);
 
             //●●●●定石D●●●●//
             logics[3].accept(boardMatrix, candidateMat);
@@ -165,34 +158,29 @@ public class SolveMain
                 break;
 
             //盤面変化したら最初に戻って定石Aから
-            if (Utility.IsChangeBoard(candidateMat, bufferMatrix))
-            {
-                //Utility.Mistake(boardMatrix,"三つ子");
+            if (Utility.IsChangeBoard(candidateMat, prevUseLogicBufferMatrix))
                 continue;
-            }
 
             //どれも適用できなかったら処理終了
             break;
         }
 
-
-        int xynum = 0;
         String useBrute = "";
         if (!Utility.IsCompleteBoard(boardMatrix)) {
             if (isUseBacktrack) {
-                dataList = Utility.ArrayDimConvertToOne(boardMatrix);
+                //ロジック適用前の盤面を持ってくる
+                dataList = Utility.ArrayDimConvertToOne(prevUseAllLogicsBufferMatrix);
                 solver.BruteForce(dataList, 0, boardMatrix);
                 useBrute = solver.getDifficultScore() <= 10000000 ? "\n総当たり法使用" : "\n解けません";
-
             }
         }
         dataList = Utility.ArrayDimConvertToOne(boardMatrix);
 
         String result = Utility.IsCompleteBoard(boardMatrix) ? "完成" : "未完成";
 
-        Log = result + solver.getLog() + useBrute;
+        log = result + solver.getLog() + useBrute;
 
-        DScore = solver.getDifficultScore();
+        dScore = solver.getDifficultScore();
 
         String str="";
         for(int i: dataList)
